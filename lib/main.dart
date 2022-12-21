@@ -1,3 +1,4 @@
+import 'package:customscrollview_rightway/sol2.dart';
 import 'package:customscrollview_rightway/statement.dart';
 import 'package:flutter/material.dart';
 
@@ -23,6 +24,8 @@ class MyApp extends StatelessWidget {
       ),
 
       home: Statement(),
+      // PinnedTitleApp(),
+      // Statement(),
     );
   }
 }
