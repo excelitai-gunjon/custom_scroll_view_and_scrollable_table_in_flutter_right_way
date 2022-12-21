@@ -11,12 +11,6 @@ class Statement extends StatefulWidget {
   State<Statement> createState() => _StatementState();
 }
 
-// ListView(
-// children: [
-// StatementDatePage(),
-// TablePage(),
-// ],
-// ),
 class _StatementState extends State<Statement> {
   @override
   Widget build(BuildContext context) {
@@ -30,30 +24,26 @@ class _StatementState extends State<Statement> {
           ),
         ),
         body: NestedScrollView(
-      physics: NeverScrollableScrollPhysics(),
-      headerSliverBuilder: (context, isScolled) {
-        return [
-
-          SliverAppBar(
-            collapsedHeight:
-                AppDimension.padding(figPadding: 800, context: context), // 500
-            expandedHeight:
-                AppDimension.padding(figPadding: 800, context: context), // 500
-            flexibleSpace: Column(
-              children: [
-
-                StatementDatePage(),
-              ],
-            ),
-          )
-        ];
-      },
-      body: TablePage(),
-    ));
+          physics: NeverScrollableScrollPhysics(),
+          headerSliverBuilder: (context, isScolled) {
+            return [
+              SliverAppBar(
+                collapsedHeight: AppDimension.padding(
+                    figPadding: 800, context: context), // 500
+                expandedHeight: AppDimension.padding(
+                    figPadding: 800, context: context), // 500
+                flexibleSpace: Column(
+                  children: [
+                    StatementDatePage(),
+                  ],
+                ),
+              )
+            ];
+          },
+          body: TablePage(),
+        ));
   }
 }
-
-
 
 // StatementDatePage Components ---------------------------------------------------------------------
 
@@ -84,8 +74,20 @@ class _StatementDatePageState extends State<StatementDatePage> {
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              DateTimeCard(),
+              // SEC 1 - the two cubes
+              Row(
+                children: [
+                  Expanded(child: MerchantInfoCard()),
+                  DateTimeCard(),
+                ],
+              ),
 
+
+
+              // SEC 2 - Statement Date
+              SizedBox(
+                height: AppDimension.padding(figPadding: 16, context: context),
+              ),
               AppCustomTextLebel(
                 lebel: "STATEMENT DATE :",
                 bold: true,
@@ -123,7 +125,6 @@ class _StatementDatePageState extends State<StatementDatePage> {
                   color: dailyList[index].color,
                 ),
               ),
-
               // Row of 3 boxes
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -153,7 +154,7 @@ class _StatementDatePageState extends State<StatementDatePage> {
                     color: Color(0xffF8CBAD),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         )
@@ -162,7 +163,7 @@ class _StatementDatePageState extends State<StatementDatePage> {
   }
 }
 
-// Table Components ----------------------------------------------------------------------------------
+// Table Components ----------------------------------------------------------------------------
 
 class TablePage extends StatefulWidget {
   @override
@@ -200,7 +201,6 @@ class _TablePageState extends State<TablePage> {
         frozenColumnsCount: 1,
         footerFrozenColumnsCount: 2,
         columns: [
-
           GridColumn(
               columnName: 'date',
               label: Container(
@@ -354,56 +354,62 @@ class _TablePageState extends State<TablePage> {
 
 // table input
 List<Transaction> getTransactionData() {
-  return [
-    Transaction('12.12.12', 45114244, 'Md.Sohal', 'Express Delivery',
+  List<Transaction> addedBalanceFinalTable = [
+    Transaction('12.12.12', "45114244", 'Md.Sohal', 'Express Delivery',
         'Cash/Bkash', 700, 800, 5920, 4180),
-    Transaction('12.12.12', 45114244, 'Md.Sohal', 'Express Delivery',
+    Transaction('12.12.12', "45114244", 'Md.Sohal', 'Express Delivery',
         'Cash/Bkash', 700, 800, 5920, 4180),
-    Transaction('12.12.12', 45114244, 'Md.Sohal', 'Express Delivery',
+    Transaction('12.12.12', "45114244", 'Md.Sohal', 'Express Delivery',
         'Cash/Bkash', 700, 800, 5920, 4180),
-    Transaction('12.12.12', 45114244, 'Md.Sohal', 'Express Delivery',
+    Transaction('12.12.12', "45114244", 'Md.Sohal', 'Express Delivery',
         'Cash/Bkash', 700, 800, 5920, 4180),
-    Transaction('12.12.12', 45114244, 'Md.Sohal', 'Express Delivery',
+    Transaction('12.12.12', "45114244", 'Md.Sohal', 'Express Delivery',
         'Cash/Bkash', 700, 800, 5920, 4180),
-    Transaction('12.12.12', 45114244, 'Md.Sohal', 'Express Delivery',
+    Transaction('12.12.12', "45114244", 'Md.Sohal', 'Express Delivery',
         'Cash/Bkash', 700, 800, 5920, 4180),
-    Transaction('12.12.12', 45114244, 'Md.Sohal', 'Express Delivery',
+    Transaction('12.12.12', "45114244", 'Md.Sohal', 'Express Delivery',
         'Cash/Bkash', 700, 800, 5920, 4180),
-    Transaction('12.12.12', 45114244, 'Md.Sohal', 'Express Delivery',
+    Transaction('12.12.12', "45114244", 'Md.Sohal', 'Express Delivery',
         'Cash/Bkash', 700, 800, 5920, 4180),
-    Transaction('12.12.12', 45114244, 'Md.Sohal', 'Express Delivery',
+    Transaction('12.12.12', "45114244", 'Md.Sohal', 'Express Delivery',
         'Cash/Bkash', 700, 800, 5920, 4180),
-    Transaction('12.12.12', 45114244, 'Md.Sohal', 'Express Delivery',
+    Transaction('12.12.12', "45114244", 'Md.Sohal', 'Express Delivery',
         'Cash/Bkash', 700, 800, 5920, 4180),
-    Transaction('12.12.12', 45114244, 'Md.Sohal', 'Express Delivery',
+    Transaction('12.12.12', "45114244", 'Md.Sohal', 'Express Delivery',
         'Cash/Bkash', 700, 800, 5920, 4180),
-    Transaction('12.12.12', 45114244, 'Md.Sohal', 'Express Delivery',
+    Transaction('12.12.12', "45114244", 'Md.Sohal', 'Express Delivery',
         'Cash/Bkash', 700, 800, 5920, 4180),
-    Transaction('12.12.12', 45114244, 'Md.Sohal', 'Express Delivery',
+    Transaction('12.12.12', "45114244", 'Md.Sohal', 'Express Delivery',
         'Cash/Bkash', 700, 800, 5920, 4180),
-    Transaction('12.12.12', 45114244, 'Md.Sohal', 'Express Delivery',
+    Transaction('12.12.12', "45114244", 'Md.Sohal', 'Express Delivery',
         'Cash/Bkash', 700, 800, 5920, 4180),
-    Transaction('12.12.12', 45114244, 'Md.Sohal', 'Express Delivery',
+    Transaction('12.12.12', "45114244", 'Md.Sohal', 'Express Delivery',
         'Cash/Bkash', 700, 800, 5920, 4180),
-    Transaction('12.12.12', 45114244, 'Md.Sohal', 'Express Delivery',
-        'Cash/Bkash', 700, 800, 5920, 4180),
-    Transaction('12.12.12', 45114244, 'Md.Sohal', 'Express Delivery',
-        'Cash/Bkash', 700, 800, 5920, 4180),
-    Transaction('12.12.12', 45114244, 'Md.Sohal', 'Express Delivery',
-        'Cash/Bkash', 700, 800, 5920, 4180),
-    Transaction('12.12.12', 45114244, 'Md.Sohal', 'Express Delivery',
-        'Cash/Bkash', 700, 800, 5920, 4180),
-    Transaction('12.12.12', 45114244, 'Md.Sohal', 'Express Delivery',
-        'Cash/Bkash', 700, 800, 5920, 4180),
-    Transaction('12.12.12', 45114244, 'Md.Sohal', 'Express Delivery',
-        'Cash/Bkash', 700, 800, 5920, 4180),
-    Transaction('12.12.12', 45114244, 'Md.Sohal', 'Express Delivery',
-        'Cash/Bkash', 700, 800, 5920, 4180),
-    Transaction('12.12.12', 45114244, 'Md.Sohal', 'Express Delivery',
-        'Cash/Bkash', 700, 800, 5920, 4180),
-    Transaction('12.12.12', 45114244, 'Md.Sohal', 'Express Delivery',
+    Transaction('12.12.12', "45114244", 'Md.Sohal', 'Express Delivery',
         'Cash/Bkash', 700, 800, 5920, 4180),
   ];
+
+  // Addition logic
+
+  int cashRecord=0;
+  int withdrowForCharge=0;
+  int balance =0;
+  int withdraw =0;
+
+
+  addedBalanceFinalTable.forEach((element) {
+
+    cashRecord=cashRecord+element.cashRec;
+    withdrowForCharge=withdrowForCharge+element.withdrawCharges;
+    balance = balance + element.balance;
+    withdraw = withdraw + element.withdraw;
+  });
+
+  addedBalanceFinalTable.add(Transaction("Total", '', '', '', '', cashRecord, withdrowForCharge, balance, withdraw));
+  //
+
+  return addedBalanceFinalTable;
+
 }
 
 class TransactionDataSource extends DataGridSource {
@@ -412,7 +418,7 @@ class TransactionDataSource extends DataGridSource {
     dataGridRows = transactions
         .map<DataGridRow>((dataGridRow) => DataGridRow(cells: [
               DataGridCell<String>(columnName: 'date', value: dataGridRow.date),
-              DataGridCell<int>(
+              DataGridCell<String>(
                   columnName: 'invoiceNo', value: dataGridRow.invoiceNo),
               DataGridCell<String>(
                   columnName: 'customerName', value: dataGridRow.customerName),
@@ -429,7 +435,7 @@ class TransactionDataSource extends DataGridSource {
                   columnName: 'balance', value: dataGridRow.balance),
               DataGridCell<int>(
                   columnName: 'withdraw', value: dataGridRow.withdraw),
-            ]))
+            ],),)
         .toList();
   }
 
@@ -438,13 +444,30 @@ class TransactionDataSource extends DataGridSource {
   List<DataGridRow> get rows => dataGridRows;
   @override
   DataGridRowAdapter buildRow(DataGridRow row) {
+    print(dataGridRows.length);
+    bool turnRed = false;
     count++;
-    // final colorRow=Color(0xffD9E1F2);
+
     return DataGridRowAdapter(
         color: Colors.white60, //Color(0xffD9E1F2),
 
+
+
         cells: row.getCells().map<Widget>((dataGridCell) {
+
           Color getRowColor() {
+
+            // turn red logic
+            if(dataGridCell.value=='Total'){
+              turnRed = true;
+            }
+
+            if(turnRed){
+              return Color(0xffE1403F);
+            }
+            //
+
+
             if ((dataGridCell.columnName == 'balance' && count % 2 == 0) ||
                 (dataGridCell.columnName == 'invoiceNo' && count % 2 == 0) ||
                 (dataGridCell.columnName == 'serviceType' && count % 2 == 0) ||
@@ -452,7 +475,7 @@ class TransactionDataSource extends DataGridSource {
                 (dataGridCell.columnName == 'invoiceNo' && count % 2 == 0) ||
                 (dataGridCell.columnName == 'invoiceNo' && count % 2 == 0) ||
                 (dataGridCell.columnName == 'invoiceNo' && count % 2 == 0)) {
-              return Color(0xffE3E3E3);
+              return Color(0xffE3E3E3); //ash
             }
 
             if ((dataGridCell.columnName == 'balance') ||
@@ -462,19 +485,23 @@ class TransactionDataSource extends DataGridSource {
                 (dataGridCell.columnName == 'invoiceNo') ||
                 (dataGridCell.columnName == 'invoiceNo') ||
                 (dataGridCell.columnName == 'invoiceNo')) {
-              return Color(0xffE3E3E3);
+              return Color(0xffE3E3E3); //ash
             }
+
+
 
             if (count % 2 == 0) {
+
               return Colors.white60;
             } else {
-              return Color(0xffD9E1F2);
+              return Color(0xffD9E1F2); //blue
             }
+
           }
 
-          //
 
           return Container(
+              // dataGridRows.length == totalCount ? Colors.red
               color: getRowColor(),
               padding: EdgeInsets.symmetric(horizontal: 6.0),
 
@@ -486,12 +513,12 @@ class TransactionDataSource extends DataGridSource {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   dataGridCell.value.toString(),
-                  overflow: TextOverflow.ellipsis,
+                  // overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                   // style: getTextStyle(),
                   style: TextStyle(
-                      color: Color(0xFF0B4461),
-                      fontSize: 12,
+                      color: turnRed?Colors.white : Color(0xFF0B4461),
+                      fontSize: turnRed?13:12,
                       fontWeight: FontWeight.w700),
                 ),
               ));
@@ -502,7 +529,7 @@ class TransactionDataSource extends DataGridSource {
 class Transaction {
   // final String date;
   final String date;
-  final int invoiceNo;
+  final String invoiceNo;
   final String customerName;
   final String serviceType;
   final String paymentType;
@@ -526,60 +553,6 @@ class Transaction {
 
 }
 
-class DateData {
-  final String date;
-  final String colunmName;
-  DateData({@required this.date, @required this.colunmName});
-}
-
-class InvoiceNoData {
-  final int invoiceNo;
-  final String colunmName;
-  InvoiceNoData({@required this.invoiceNo, @required this.colunmName});
-}
-
-class CustomerNameData {
-  final String customerName;
-  final String colunmName;
-  CustomerNameData({@required this.customerName, @required this.colunmName});
-}
-
-class ServiceTypeData {
-  final String serviceType;
-  final String colunmName;
-  ServiceTypeData({@required this.serviceType, @required this.colunmName});
-}
-
-class PaymentTypeData {
-  final String paymentType;
-  final String colunmName;
-  PaymentTypeData({@required this.paymentType, @required this.colunmName});
-}
-
-class CashRecData {
-  final int cashRec;
-  final String colunmName;
-  CashRecData({@required this.cashRec, @required this.colunmName});
-}
-
-class WithdrawChargesData {
-  final int withdrawCharges;
-  final String colunmName;
-  WithdrawChargesData(
-      {@required this.withdrawCharges, @required this.colunmName});
-}
-
-class BalanceData {
-  final int balance;
-  final String colunmName;
-  BalanceData({@required this.balance, @required this.colunmName});
-}
-
-class WithdrawData {
-  final int withdraw;
-  final String colunmName;
-  WithdrawData({@required this.withdraw, @required this.colunmName});
-}
 
 // App Dimensions -----------------------------------------------------
 
@@ -805,8 +778,8 @@ class CustomGridItemWidget extends StatelessWidget {
   Color color;
   CustomGridItemWidget(
       {@required this.image,
-        @required this.width,
-        @required this.height,
+      @required this.width,
+      @required this.height,
       @required this.title,
       @required this.amount,
       @required this.color,
@@ -816,8 +789,10 @@ class CustomGridItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
-      height: AppDimension.height(figmaHeight: height!=null?height:86, context: context),
-      width: AppDimension.width(figmaWidth: width != null?width:106, context: context), // 158
+      height: AppDimension.height(
+          figmaHeight: height != null ? height : 86, context: context),
+      width: AppDimension.width(
+          figmaWidth: width != null ? width : 106, context: context), // 158
       color: color != null ? color : Colors.white,
       boxShadow: containerShadow,
       paddingHorizontal: AppDimension.padding(figPadding: 2, context: context),
@@ -938,7 +913,6 @@ final List<BoxShadow> containerShadow = [
   ),
 ];
 
-
 class DateTimeCard extends StatefulWidget {
   bool balanceShow;
   bool dropDownShow;
@@ -986,14 +960,346 @@ class _DateTimeCardState extends State<DateTimeCard> {
           ),
         ),
         child: Builder(
-// This widget is required for the theme to be applied
+        // This widget is required for the theme to be applied
+            builder: (context) {
+          return Padding(
+            padding: EdgeInsets.all(
+                AppDimension.padding(figPadding: 2, context: context)),
+            child: CustomBlueBackground(
+              elevation: 5,
+              width: AppDimension.width(figmaWidth: 158, context: context),
+              borderRadius: AppDimension.getResponsivePixelSize(
+                  figmaPixelSize: 10, context: context),
+              boxShadow: [],
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal:
+                        AppDimension.padding(figPadding: 15, context: context),
+                    vertical:
+                        AppDimension.padding(figPadding: 20, context: context)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+
+                    // SizedBox(
+                    //   height: AppDimension.getResponsivePixelSize(
+                    //       figmaPixelSize: 10, context: context),
+                    //   //  width: 10,
+                    // ),
+                    Center(
+                      child: Column(
+                        children: [
+                          Text("STATEMENT DATE",
+                            style: TextStyle(
+                              color: Color(0xFF0B4461),
+                              fontWeight: FontWeight.w700,
+                              fontSize: AppDimension.fontSize(figmaFontSize: 14, context: context),
+                            ),
+                          ),
+                          SizedBox(
+                            height: AppDimension.getResponsivePixelSize(
+                                figmaPixelSize: 15, context: context),
+                          ),
+                          Container(
+                            height: AppDimension.height(
+                                figmaHeight: 28, context: context),
+                            width: AppDimension.width(
+                                figmaWidth: 143, context: context),
+                            decoration: BoxDecoration(
+                              color: whiteColor,
+                              borderRadius: BorderRadius.all(Radius.circular(
+                                  AppDimension.getResponsivePixelSize(
+                                      figmaPixelSize: 5, context: context))),
+                              border: Border.all(color: borderColor),
+                            ),
+                            child: Center(
+                              child: TextField(
+                                controller:
+                                    fromDateCtrl, //editing controller of this TextField
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  contentPadding:
+                                      EdgeInsets.only(left: 10, bottom: 15),
+                                  hintText: "From Date",
+                                  hintStyle: TextStyle(
+                                    color: greyColor,
+                                    fontSize: AppDimension.fontSize(
+                                        figmaFontSize: 14, context: context),
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                readOnly:
+                                    true, //set it true, so that user will not able to edit text
+                                onTap: () async {
+                                  DateTime pickedDate = await showDatePicker(
+                                      context: context,
+                                      initialDate: DateTime.now(),
+                                      firstDate: DateTime(
+                                          2000), //DateTime.now() - not to allow to choose before today.
+                                      lastDate: DateTime(2101));
+
+                                  if (pickedDate != null) {
+                                    print(
+                                        pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                                    //String formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate);
+                                    String formattedDate =
+                                        DateFormat('dd-MM-yyyy')
+                                            .format(pickedDate);
+                                    print(
+                                        formattedDate); //formatted date output using intl package =>  2021-03-16
+                                    //you can implement different kind of Date Format here according to your requirement
+
+                                    setState(() {
+                                      fromDateCtrl.text =
+                                          formattedDate; //set output date to TextField value.
+                                    });
+                                  } else {
+                                    print("Date is not selected");
+                                  }
+                                },
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: AppDimension.getResponsivePixelSize(
+                                figmaPixelSize: 15, context: context),
+                          ),
+                          Container(
+                            height: AppDimension.height(
+                                figmaHeight: 28, context: context),
+                            width: AppDimension.width(
+                                figmaWidth: 143, context: context),
+                            decoration: BoxDecoration(
+                              color: whiteColor,
+                              borderRadius: BorderRadius.all(Radius.circular(
+                                  AppDimension.getResponsivePixelSize(
+                                      figmaPixelSize: 5, context: context))),
+                              border: Border.all(color: borderColor),
+                            ),
+                            child: Center(
+                              child: TextField(
+                                controller:
+                                fromDateCtrl, //editing controller of this TextField
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  contentPadding:
+                                  EdgeInsets.only(left: 10, bottom: 15),
+                                  hintText: "To Date",
+                                  hintStyle: TextStyle(
+                                    color: greyColor,
+                                    fontSize: AppDimension.fontSize(
+                                        figmaFontSize: 14, context: context),
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                readOnly:
+                                true, //set it true, so that user will not able to edit text
+                                onTap: () async {
+                                  DateTime pickedDate = await showDatePicker(
+                                      context: context,
+                                      initialDate: DateTime.now(),
+                                      firstDate: DateTime(
+                                          2000), //DateTime.now() - not to allow to choose before today.
+                                      lastDate: DateTime(2101));
+
+                                  if (pickedDate != null) {
+                                    print(
+                                        pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                                    //String formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate);
+                                    String formattedDate =
+                                    DateFormat('dd-MM-yyyy')
+                                        .format(pickedDate);
+                                    print(
+                                        formattedDate); //formatted date output using intl package =>  2021-03-16
+                                    //you can implement different kind of Date Format here according to your requirement
+
+                                    setState(() {
+                                      fromDateCtrl.text =
+                                          formattedDate; //set output date to TextField value.
+                                    });
+                                  } else {
+                                    print("Date is not selected");
+                                  }
+                                },
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: AppDimension.getResponsivePixelSize(
+                          figmaPixelSize: 15, context: context),
+                    ),
+                    if (widget.dropDownShow)
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CustomTextWidget(
+                            lebel: "Parcel Status",
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            lebelColor: greyColor,
+                          ),
+                          SizedBox(
+                            height: AppDimension.getResponsivePixelSize(
+                                figmaPixelSize: 10, context: context),
+                          ),
+                          DropDownButton(
+                            height: AppDimension.height(
+                                figmaHeight: 42, context: context),
+                            width: AppDimension.width(
+                                figmaWidth: 298, context: context),
+                            decoration: BoxDecoration(
+                              color: whiteColor,
+                              borderRadius: BorderRadius.all(Radius.circular(
+                                  AppDimension.getResponsivePixelSize(
+                                      figmaPixelSize: 5, context: context))),
+                              border: Border.all(
+                                  width: AppDimension.getResponsivePixelSize(
+                                      figmaPixelSize: 1, context: context),
+                                  color: borderColor),
+                            ),
+                            child: DropdownButton(
+                              isExpanded: true,
+                              underline: const SizedBox(),
+                              value: deliveryTypeValue,
+                              icon: Padding(
+                                padding: EdgeInsets.only(
+                                    right: AppDimension.padding(
+                                        figPadding: 16, context: context)),
+                                child: const Icon(Icons.arrow_drop_down),
+                              ),
+                              elevation: 16,
+                              style: TextStyle(
+                                  color: Color(0xFF877E7E),
+                                  fontSize: AppDimension.fontSize(
+                                      figmaFontSize: 12, context: context)),
+                              onChanged: (value) {
+                                setState(() {
+                                  deliveryTypeValue = value;
+                                });
+                              },
+                              items: deliveryTypeList
+                                  .map<DropdownMenuItem<String>>(
+                                      (String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(
+                                        left: AppDimension.padding(
+                                            figPadding: 18, context: context)),
+                                    child: Text(
+                                      value,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: AppDimension.fontSize(
+                                              figmaFontSize: 14,
+                                              context: context)),
+                                    ),
+                                  ),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                          SizedBox(
+                            height: AppDimension.getResponsivePixelSize(
+                                figmaPixelSize: 15, context: context),
+                          ),
+                        ],
+                      )
+                    else
+                      SizedBox(),
+                    CustomButtonWidget(
+                      height: AppDimension.height(
+                          figmaHeight: 42, context: context),
+                      width:
+                          AppDimension.width(figmaWidth: 143, context: context),
+                      decoration: BoxDecoration(
+                        color: Color(0xFF0B4461),
+                        borderRadius: BorderRadius.all(Radius.circular(
+                            AppDimension.getResponsivePixelSize(
+                                figmaPixelSize: 5, context: context))),
+                      ),
+                      onPress: () {},
+                      //titleFontSize: AppDimension.height(figmaHeight: 14, context: context),
+                      title: "Search",
+                      style: TextStyle(
+                        color: whiteColor,
+                        fontSize: AppDimension.fontSize(
+                            figmaFontSize: 14, context: context),
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        }
+
+            ///
+
+            ));
+  }
+}
+
+
+class MerchantInfoCard extends StatefulWidget {
+  bool balanceShow;
+  bool dropDownShow;
+  MerchantInfoCard({this.balanceShow = false, this.dropDownShow = false, Key key})
+      : super(key: key);
+
+  @override
+  _MerchantInfoCard createState() => _MerchantInfoCard();
+}
+
+class _MerchantInfoCard extends State<MerchantInfoCard> {
+  TextEditingController fromDateCtrl = TextEditingController();
+  TextEditingController toDateCtrl = TextEditingController();
+  //text editing controller for text field
+
+  @override
+  void initState() {
+    fromDateCtrl.text = ""; //set the initial value of text field
+    toDateCtrl.text = "";
+    super.initState();
+  }
+
+  List<String> deliveryTypeList = [
+    'Select Parcel status',
+    'Complete Delivery',
+    'Delivery Pending',
+    'Delivery Cancel',
+    'Payment Done',
+  ];
+
+  String deliveryTypeValue = "Select Parcel status";
+  @override
+  Widget build(BuildContext context) {
+    return Theme(
+        data: Theme.of(context).copyWith(
+          colorScheme: ColorScheme.light(
+            primary: textColor, // header background color
+            onPrimary: whiteColor, // header text color
+            onSurface: textColor, // body text color
+          ),
+          textButtonTheme: TextButtonThemeData(
+            style: TextButton.styleFrom(
+              primary: textColor, // button text color
+            ),
+          ),
+        ),
+        child: Builder(
+          // This widget is required for the theme to be applied
             builder: (context) {
               return Padding(
                 padding: EdgeInsets.all(
-                    AppDimension.padding(figPadding: 16, context: context)),
-                child: CustomWhiteBackground(
+                    AppDimension.padding(figPadding: 2, context: context)),
+                child: CustomBlueBackground(
                   elevation: 5,
-                  width: AppDimension.width(figmaWidth: 328, context: context),
+                  width: AppDimension.width(figmaWidth: 158, context: context),
                   borderRadius: AppDimension.getResponsivePixelSize(
                       figmaPixelSize: 10, context: context),
                   boxShadow: [],
@@ -1006,259 +1312,124 @@ class _DateTimeCardState extends State<DateTimeCard> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        if (widget.balanceShow)
-                         null
-                        else
-                          SizedBox(),
-                        SizedBox(
-                          height: AppDimension.getResponsivePixelSize(
-                              figmaPixelSize: 10, context: context),
-                          //  width: 10,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                                child: Container(
-                                  height: AppDimension.height(
-                                      figmaHeight: 28, context: context),
-                                  width: AppDimension.width(
-                                      figmaWidth: 143, context: context),
-                                  decoration: BoxDecoration(
-                                    color: whiteColor,
-                                    borderRadius: BorderRadius.all(Radius.circular(
-                                        AppDimension.getResponsivePixelSize(
-                                            figmaPixelSize: 5, context: context))),
-                                    border: Border.all(color: borderColor),
-                                  ),
-                                  child: Center(
-                                    child: TextField(
-                                      controller:
-                                      fromDateCtrl, //editing controller of this TextField
-                                      decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        contentPadding:
-                                        EdgeInsets.only(left: 10, bottom: 15),
-                                        hintText: "From Date",
-                                        hintStyle: TextStyle(
-                                          color: greyColor,
-                                          fontSize: AppDimension.fontSize(
-                                              figmaFontSize: 14, context: context),
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                      readOnly:
-                                      true, //set it true, so that user will not able to edit text
-                                      onTap: () async {
-                                        DateTime pickedDate = await showDatePicker(
-                                            context: context,
-                                            initialDate: DateTime.now(),
-                                            firstDate: DateTime(
-                                                2000), //DateTime.now() - not to allow to choose before today.
-                                            lastDate: DateTime(2101));
 
-                                        if (pickedDate != null) {
-                                          print(
-                                              pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
-                                          //String formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate);
-                                          String formattedDate =
-                                          DateFormat('dd-MM-yyyy')
-                                              .format(pickedDate);
-                                          print(
-                                              formattedDate); //formatted date output using intl package =>  2021-03-16
-                                          //you can implement different kind of Date Format here according to your requirement
-
-                                          setState(() {
-                                            fromDateCtrl.text =
-                                                formattedDate; //set output date to TextField value.
-                                          });
-                                        } else {
-                                          print("Date is not selected");
-                                        }
-                                      },
-                                    ),
-                                  ),
-                                )),
-                            SizedBox(
-                              width: AppDimension.getResponsivePixelSize(
-                                  figmaPixelSize: 10, context: context),
-                              //  width: 10,
-                            ),
-                            Expanded(
-                                child: Container(
-                                  height: AppDimension.height(
-                                      figmaHeight: 28, context: context),
-                                  width: AppDimension.width(
-                                      figmaWidth: 143, context: context),
-                                  decoration: BoxDecoration(
-                                    color: whiteColor,
-                                    borderRadius: BorderRadius.all(Radius.circular(
-                                        AppDimension.getResponsivePixelSize(
-                                            figmaPixelSize: 5, context: context))),
-                                    border: Border.all(color: borderColor),
-                                  ),
-                                  child: Center(
-                                    child: TextField(
-                                      controller:
-                                      toDateCtrl, //editing controller of this TextField
-                                      decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        contentPadding:
-                                        EdgeInsets.only(left: 10, bottom: 15),
-                                        hintText: "To Date",
-                                        hintStyle: TextStyle(
-                                          color: greyColor,
-                                          //  color:  Color(0xFFECB409),
-                                          fontSize: AppDimension.fontSize(
-                                              figmaFontSize: 14, context: context),
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                      readOnly:
-                                      true, //set it true, so that user will not able to edit text
-                                      onTap: () async {
-                                        DateTime pickedDate = await showDatePicker(
-                                            context: context,
-                                            initialDate: DateTime.now(),
-                                            firstDate: DateTime(
-                                                2000), //DateTime.now() - not to allow to choose before today.
-                                            lastDate: DateTime(2101));
-
-                                        if (pickedDate != null) {
-                                          print(
-                                              pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
-                                          //String formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate);
-                                          String formattedDate =
-                                          //  DateFormat('yyyy-MM-dd')
-                                          DateFormat('dd-MM-yyyy')
-                                              .format(pickedDate);
-                                          print(
-                                              formattedDate); //formatted date output using intl package =>  2021-03-16
-                                          //you can implement different kind of Date Format here according to your requirement
-
-                                          setState(() {
-                                            toDateCtrl.text =
-                                                formattedDate; //set output date to TextField value.
-                                          });
-                                        } else {
-                                          print("Date is not selected");
-                                        }
-                                      },
-                                    ),
-                                  ),
-                                )),
-                          ],
-                        ),
-                        SizedBox(
-                          height: AppDimension.getResponsivePixelSize(
-                              figmaPixelSize: 15, context: context),
-                        ),
-
-                        if (widget.dropDownShow)
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                        // SizedBox(
+                        //   height: AppDimension.getResponsivePixelSize(
+                        //       figmaPixelSize: 10, context: context),
+                        //   //  width: 10,
+                        // ),
+                        Center(
+                          child: Column(
                             children: [
-                              CustomTextWidget(
-                                lebel: "Parcel Status",
-
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                lebelColor: greyColor,
-                              ),
-                              SizedBox(
-                                height: AppDimension.getResponsivePixelSize(
-                                    figmaPixelSize: 10, context: context),
-                              ),
-                              DropDownButton(
-                                height: AppDimension.height(
-                                    figmaHeight: 42, context: context),
-                                width: AppDimension.width(
-                                    figmaWidth: 298, context: context),
-                                decoration: BoxDecoration(
-                                  color: whiteColor,
-                                  borderRadius: BorderRadius.all(Radius.circular(
-                                      AppDimension.getResponsivePixelSize(
-                                          figmaPixelSize: 5, context: context))),
-                                  border: Border.all(
-                                      width: AppDimension.getResponsivePixelSize(
-                                          figmaPixelSize: 1, context: context),
-                                      color: borderColor),
-                                ),
-                                child: DropdownButton(
-                                  isExpanded: true,
-                                  underline: const SizedBox(),
-                                  value: deliveryTypeValue,
-                                  icon: Padding(
-                                    padding: EdgeInsets.only(
-                                        right: AppDimension.padding(
-                                            figPadding: 16, context: context)),
-                                    child: const Icon(Icons.arrow_drop_down),
-                                  ),
-                                  elevation: 16,
-                                  style: TextStyle(
-                                      color: Color(0xFF877E7E),
-                                      fontSize: AppDimension.fontSize(
-                                          figmaFontSize: 12, context: context)),
-                                  onChanged: (value) {
-                                    setState(() {
-                                      deliveryTypeValue = value;
-                                    });
-                                  },
-                                  items: deliveryTypeList
-                                      .map<DropdownMenuItem<String>>(
-                                          (String value) {
-                                        return DropdownMenuItem<String>(
-                                          value: value,
-                                          child: Padding(
-                                            padding: EdgeInsets.only(
-                                                left: AppDimension.padding(
-                                                    figPadding: 18, context: context)),
-                                            child: Text(
-                                              value,
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w400,
-                                                  fontSize: AppDimension.fontSize(
-                                                      figmaFontSize: 14,
-                                                      context: context)),
-                                            ),
-                                          ),
-                                        );
-                                      }).toList(),
+                              Text("MERCHANT INFORMATION",
+                                maxLines: 2,
+                                style: TextStyle(
+                                  color: Color(0xFF0B4461),
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: AppDimension.fontSize(figmaFontSize: 14, context: context),
                                 ),
                               ),
                               SizedBox(
                                 height: AppDimension.getResponsivePixelSize(
                                     figmaPixelSize: 15, context: context),
                               ),
+
+                              Container(
+                                width: AppDimension.getResponsivePixelSize(
+                                    figmaPixelSize: 142, context: context),
+                                height: AppDimension.getResponsivePixelSize(
+                                    figmaPixelSize: 98, context: context),
+
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border: Border.all(
+                                      color: Color(0xffC7C7C7),
+                                    ),
+                                    borderRadius: BorderRadius.all(Radius.circular(8))
+                                ),
+
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(4.0),
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Icon(Icons.circle,
+                                                color: Color(0xffE1403F),
+                                                size: 10, // 6
+                                              ),
+                                              SizedBox(width: AppDimension.padding(figPadding: 2, context: context),),
+                                              Text("Merchant Name",
+                                              style: TextStyle(
+                                                color: Color(0xff0B4461),
+                                                fontSize: AppDimension.fontSize(figmaFontSize: 14, context: context),
+                                                fontWeight: FontWeight.w400,
+                                              ),)
+
+                                            ],
+                                          ),
+                                          Text("Hasib",
+                                            style: TextStyle(
+                                              color: Color(0xff0B4461),
+                                              fontSize: AppDimension.fontSize(figmaFontSize: 14, context: context),
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+
+                                    Padding(
+                                      padding: const EdgeInsets.all(4.0),
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Icon(Icons.circle,
+                                                color: Color(0xffE1403F),
+                                                size: 10, // 6
+                                              ),
+                                              SizedBox(width: AppDimension.padding(figPadding: 2, context: context),),
+                                              Text("Merchant ID",
+                                                style: TextStyle(
+                                                  color: Color(0xff0B4461),
+                                                  fontSize: AppDimension.fontSize(figmaFontSize: 14, context: context),
+                                                  fontWeight: FontWeight.w400,
+                                                ),)
+
+                                            ],
+                                          ),
+                                          Text("1245",
+                                            style: TextStyle(
+                                              color: Color(0xff0B4461),
+                                              fontSize: AppDimension.fontSize(figmaFontSize: 14, context: context),
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+
+                                  ],
+                                ),
+
+                              ),
+
+
+                              SizedBox(
+                                height: AppDimension.getResponsivePixelSize(
+                                    figmaPixelSize: 5, context: context),
+
+                              ),
+
                             ],
-                          )
-                        else
-                          SizedBox(),
-
-
-
-                        CustomButtonWidget(
-                          height: AppDimension.height(
-                              figmaHeight: 42, context: context),
-                          width:
-                          AppDimension.width(figmaWidth: 298, context: context),
-                          decoration: BoxDecoration(
-                            color: buttonColor,
-                            borderRadius: BorderRadius.all(Radius.circular(
-                                AppDimension.getResponsivePixelSize(
-                                    figmaPixelSize: 5, context: context))),
-                          ),
-                          onPress: () {},
-                          //titleFontSize: AppDimension.height(figmaHeight: 14, context: context),
-                          title: "Search",
-                          style: TextStyle(
-                            color: whiteColor,
-                            fontSize: AppDimension.fontSize(
-                                figmaFontSize: 14, context: context),
-                            fontWeight: FontWeight.w500,
                           ),
                         ),
+
+
                       ],
                     ),
                   ),
@@ -1272,22 +1443,21 @@ class _DateTimeCardState extends State<DateTimeCard> {
   }
 }
 
+Color background = Color(0xFFBFBFBF);
 
-Color background=Color(0xFFBFBFBF);
-
-Color dashInnertextColor=Color(0xFF454545);
-Color currentBalanceColor=Color(0xFF33CC66);
-Color totalIncomeColor=Color(0xFF137855);
-Color processingColor=Color(0xFFECB409);
-Color greyColor=Color(0xFF666666);
-Color borderColor=Color(0xFFC7C7C7);
-Color darkColor=Color(0xFF505050);
-Color phoneColor=Color(0xFF32c853);
-Color grey2Color=Color(0xFFE0E0E0);
-Color underLineColor=Color(0xff0B4461);
-Color whiteColor=Color(0xFFFFFFFF);
-Color tileColor=Color(0xFFF5FBFF);
-Color invoiceColor=Color(0xFF454545);
+Color dashInnertextColor = Color(0xFF454545);
+Color currentBalanceColor = Color(0xFF33CC66);
+Color totalIncomeColor = Color(0xFF137855);
+Color processingColor = Color(0xFFECB409);
+Color greyColor = Color(0xFF666666);
+Color borderColor = Color(0xFFC7C7C7);
+Color darkColor = Color(0xFF505050);
+Color phoneColor = Color(0xFF32c853);
+Color grey2Color = Color(0xFFE0E0E0);
+Color underLineColor = Color(0xff0B4461);
+Color whiteColor = Color(0xFFFFFFFF);
+Color tileColor = Color(0xFFF5FBFF);
+Color invoiceColor = Color(0xFF454545);
 
 class CustomButtonWidget extends StatelessWidget {
   double height;
@@ -1310,47 +1480,40 @@ class CustomButtonWidget extends StatelessWidget {
 
   CustomButtonWidget(
       {@required this.height,
-        this.width,
-        @required this.title,
-        @required this.onPress,
-
-        this.decoration,
-        this.style,
-        this.child,
-        this.innerPaddingHor = 0,
-        this.innerPaddingVar = 0,
-        this.borderRadiusTop = 10,
-        this.borderRadiusBottom = 10,
-        this.outerBorderColor = Colors.white,
-        this.outerBorder = 0.0,
-        this.backgroundColor = Colors.white,
-        this.titleColor = Colors.black,
-
-        Key key})
+      this.width,
+      @required this.title,
+      @required this.onPress,
+      this.decoration,
+      this.style,
+      this.child,
+      this.innerPaddingHor = 0,
+      this.innerPaddingVar = 0,
+      this.borderRadiusTop = 10,
+      this.borderRadiusBottom = 10,
+      this.outerBorderColor = Colors.white,
+      this.outerBorder = 0.0,
+      this.backgroundColor = Colors.white,
+      this.titleColor = Colors.black,
+      Key key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return
-
-      GestureDetector(
-        onTap: onPress,
-        child: Container(
-          height: height,
-          width: width,
-          decoration: decoration,
-          child:Center(
-            child: Text(
-                title,
-                style: style
-            ),
-          ),
+    return GestureDetector(
+      onTap: onPress,
+      child: Container(
+        height: height,
+        width: width,
+        decoration: decoration,
+        child: Center(
+          child: Text(title, style: style),
         ),
-      );
+      ),
+    );
   }
 }
 
-class CustomWhiteBackground extends StatelessWidget {
+class CustomBlueBackground extends StatelessWidget {
   double height;
   double width;
   double borderRadius;
@@ -1361,23 +1524,22 @@ class CustomWhiteBackground extends StatelessWidget {
   double innerPaddingVar;
   Widget child;
 
-  CustomWhiteBackground(
-      { this.height,
-        @required this.width,
-        this.boxShadow,
-        this.child,
-        this.color = Colors.white,
-        this.borderRadius = 10,
-        this.elevation = 0,
-        this.innerPaddingHor = 0,
-        this.innerPaddingVar = 0,
-        Key key})
+  CustomBlueBackground(
+      {this.height,
+      @required this.width,
+      this.boxShadow,
+      this.child,
+      this.color = const Color(0xffF3F4F6),
+      this.borderRadius = 10,
+      this.elevation = 0,
+      this.innerPaddingHor = 0,
+      this.innerPaddingVar = 0,
+      Key key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
-
         elevation: elevation,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius),
@@ -1386,12 +1548,14 @@ class CustomWhiteBackground extends StatelessWidget {
           width: width,
           height: height,
           padding: EdgeInsets.symmetric(
-              vertical: innerPaddingVar,
-              horizontal: innerPaddingHor),
+              vertical: innerPaddingVar, horizontal: innerPaddingHor),
           decoration: BoxDecoration(
             boxShadow: boxShadow,
             borderRadius: BorderRadius.circular(borderRadius),
-            border: Border.all(width: AppDimension.getResponsivePixelSize(figmaPixelSize: 1, context: context),color: Color(0xffE0E0E0)),
+            border: Border.all(
+                width: AppDimension.getResponsivePixelSize(
+                    figmaPixelSize: 1, context: context),
+                color: Color(0xffE0E0E0)),
             color: color,
           ),
           child: child,
@@ -1403,7 +1567,6 @@ class CustomTextWidget extends StatelessWidget {
   String lebel;
   double fontSize;
 
-
   double height;
   double width;
 
@@ -1411,75 +1574,70 @@ class CustomTextWidget extends StatelessWidget {
   bool lebelUnderline;
   FontWeight fontWeight;
 
-  CustomTextWidget({
-    @required this.lebel,
-    this.fontSize,
-    this.fontWeight,
-    this.lebelColor,
-
-    this.width,
-    this.height,
-
-    this.lebelUnderline,
-    Key key}) : super(key: key);
+  CustomTextWidget(
+      {@required this.lebel,
+      this.fontSize,
+      this.fontWeight,
+      this.lebelColor,
+      this.width,
+      this.height,
+      this.lebelUnderline,
+      Key key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return lebelUnderline == true? Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text("$lebel",
-
-          style: TextStyle(
-
-
-
-              fontSize:    AppDimension.fontSize(figmaFontSize: fontSize??14, context: context),
-
-              fontWeight:fontWeight ?? FontWeight.normal,color:lebelColor ?? textColor),),
-        Padding(
-          padding:  EdgeInsets.only(top:  AppDimension.padding(figPadding: 5, context: context),),
-
-          child: Container(
-            height:  AppDimension.height(figmaHeight:height , context: context),
-
-            width:  AppDimension.width(figmaWidth: width, context: context),
-            color: lebelColor,
-          ),
-        )
-      ],
-    ) :
-    Text("$lebel",style: TextStyle(
-        fontSize:    AppDimension.fontSize(figmaFontSize: fontSize??14, context: context),overflow:TextOverflow.visible ,
-        fontWeight:fontWeight ?? FontWeight.normal,color:lebelColor ?? textColor),);
+    return lebelUnderline == true
+        ? Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "$lebel",
+                style: TextStyle(
+                    fontSize: AppDimension.fontSize(
+                        figmaFontSize: fontSize ?? 14, context: context),
+                    fontWeight: fontWeight ?? FontWeight.normal,
+                    color: lebelColor ?? textColor),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                  top: AppDimension.padding(figPadding: 5, context: context),
+                ),
+                child: Container(
+                  height: AppDimension.height(
+                      figmaHeight: height, context: context),
+                  width:
+                      AppDimension.width(figmaWidth: width, context: context),
+                  color: lebelColor,
+                ),
+              )
+            ],
+          )
+        : Text(
+            "$lebel",
+            style: TextStyle(
+                fontSize: AppDimension.fontSize(
+                    figmaFontSize: fontSize ?? 14, context: context),
+                overflow: TextOverflow.visible,
+                fontWeight: fontWeight ?? FontWeight.normal,
+                color: lebelColor ?? textColor),
+          );
   }
 }
 
 class DropDownButton extends StatelessWidget {
   double height;
   double width;
-  // double innerPaddingHor;
-  // double innerPaddingVar;
-  // double outerBorder;
-  // Color outerBorderColor;
-  // Decoration decoration;
-  // Color backgroundColor;
-  // TextStyle style;
-  // double borderRadiusTop;
-  // double borderRadiusBottom;
-  // Color titleColor;
-  //
-  // String title;
 
   Decoration decoration;
   Widget child;
 
   DropDownButton(
       {@required this.height,
-        @required this.width,
-        @required this.decoration,
-        @required this.child,
-        Key key})
+      @required this.width,
+      @required this.decoration,
+      @required this.child,
+      Key key})
       : super(key: key);
 
   @override
@@ -1490,7 +1648,3 @@ class DropDownButton extends StatelessWidget {
     ///
   }
 }
-
-
-
-
